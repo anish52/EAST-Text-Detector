@@ -5,6 +5,7 @@ This is a Keras implementation of EAST insprired from [argman](https://github.co
 
 The original paper by Zhou et al. is available on [arxiv](https://arxiv.org/abs/1704.03155).
 
++ A fast Locality-Aware NMS in C++ provided by the paper's author.
 + Only RBOX geometry is implemented
 + Differences from the original paper
     + Uses ResNet-50 instead of PVANet
