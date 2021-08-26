@@ -41,5 +41,5 @@ python eval.py --gpu_list=0 --test_data_path=../data/ICDAR2015/test/ --model_pat
 ```
 
 ### Detection examples
-![image_1](examples/img_13.jpg)
+![image_1](examples/img_14.jpg)
 ![image_2](examples/img_42.jpg)
