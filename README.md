@@ -1,27 +1,14 @@
 
 # EAST: An Efficient and Accurate Scene Text Detector
 
-This is a Keras implementation of EAST based on a Tensorflow implementation made by [argman](https://github.com/argman/EAST).
+This is a Keras implementation of EAST insprired from [argman](https://github.com/argman/EAST)'s work.
 
 The original paper by Zhou et al. is available on [arxiv](https://arxiv.org/abs/1704.03155).
 
 + Only RBOX geometry is implemented
 + Differences from the original paper
     + Uses ResNet-50 instead of PVANet
-    + Uses dice loss function instead of balanced binary cross-entropy
-    + Uses AdamW optimizer instead of the original Adam
-
-The implementation of AdamW optimizer is borrowed from [this repository](https://github.com/shaoanlu/AdamW-and-SGDW).
-
-The code should run under both Python 2 and Python 3.
-
-### Requirements
-
-Keras 2.0 or higher, and TensorFlow 1.0 or higher should be enough.
-
-The code should run with Keras 2.1.5. If you use Keras 2.2 or higher, you have to remove `ZeroPadding2D` from the `model.py` file. Specifically, replace the line containing `ZeroPadding2D` with `x = concatenate([x, resnet.get_layer('activation_10').output], axis=3)`.
-
-I will add a list of packages and their versions under which no errors should occur later.
+    + Uses RMSprop optimizer instead of the original Adam
 
 ### Data
 
@@ -41,12 +28,8 @@ You also need a directory for validation data, which requires the same structure
 
 Training is started by running `train.py`. It accepts several arguments including path to training and validation data, and path where you want to save trained checkpoint models. You can see all of the arguments you can specify in the `train.py` file.
 
-#### Execution example
-```
-python train.py --gpu_list=0,1 --input_size=512 --batch_size=12 --nb_workers=6 --training_data_path=../data/ICDAR2015/train_data/ --validation_data_path=../data/MLT/val_data_latin/ --checkpoint_path=tmp/icdar2015_east_resnet50/
-```
-
-You can download a model trained on ICDAR 2015 and 2013 [here](https://drive.google.com/file/d/1hfIzGuQn-xApDYiucMDZvOCosyAVwvku/view?usp=sharing). It achieves 0.802 F-score on ICDAR 2015 test set. You also need to download this [JSON file](https://drive.google.com/file/d/1gnkdCToYQfdU3ssaOareFTBr0Nz6u4rr/view?usp=sharing) of the model to be able to use it.
+#### Example Notebook
+You can use the [EAST.ipynb](https://github.com/anish52/EAST-Text-Detector/blob/main/EAST.ipynb) jupyter notebook to understand a simpler version of the implementation.
 
 ### Test
 
